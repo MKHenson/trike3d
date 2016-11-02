@@ -58,18 +58,21 @@
 
         scene = new Trike.Scene();
 
-		camera = new Trike.Camera(45, 800 / 600);
+		camera = new Trike.CameraPerspective(45, 800 / 600);
 		camera.setPosition( 0, 5, -20 );
 		camera.lookAt( new Trike.Vec3( 0,0,0 ) );
         scene.add(camera);
 
+        var texture = new Trike.Texture();
+        texture.loadImage("assets/crate.gif");
+
 		var mat = new Trike.MaterialBasic();
-		mat._uniforms["map"].value = Trike.TextureLoader.getSingleton().loadTexture("assets/crate.gif");
+        mat.map(texture);
 
 		var geomCube = new Trike.GeometryCube();
 		var geomSphere = new Trike.GeometryPlane();
 
-		var numItems = 100;
+		var numItems = 10;
 		var spacing = 2;
 		for (var i = 0; i < numItems; i++)
 		{
@@ -81,7 +84,7 @@
 					mesh = new Trike.Mesh(mat, geomSphere);
 
 				mesh.setPosition( (i * spacing) - (numItems * spacing / 2), 0, -(ii * spacing) + (numItems * spacing / 2) );
-				renderer.scene.add(mesh);
+				scene.add(mesh);
 			}
 		}
 
