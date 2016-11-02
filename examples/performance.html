@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Trike Engine</title>
+	<script src="../dist/trike3d.js"></script>
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+			position: relative;
+		}
+		
+		.tester {
+			position: absolute;
+			top: 0;
+			left: 90%;
+			width: 10%;
+			background-color: rgba(80, 80, 80, 0.8);
+			color: #fff;
+		}
+		
+		#run-tests {
+			position: relative;
+			margin: 5px;
+			color: #fff;
+			text-align: center;
+			font-family: calibri;
+			height: 25px;
+			background: #499bea;
+			/* Old browsers */
+			background: -moz-linear-gradient(top, #499bea 0%, #155c96 100%);
+			/* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #499bea), color-stop(100%, #155c96));
+			/* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #499bea 0%, #155c96 100%);
+			/* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #499bea 0%, #155c96 100%);
+			/* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #499bea 0%, #155c96 100%);
+			/* IE10+ */
+			background: linear-gradient(to bottom, #499bea 0%, #155c96 100%);
+			/* W3C */
+		}
+	</style>
+
+	<script type="text/javascript">
+	var renderer, mesh, camera, scene;
+	var x = 0;
+
+	window.onload = function () {
+		renderer = new Trike.Renderer();
+		renderer.initialize( 800, 600 );
+		document.body.appendChild( renderer.canvas );
+
+		renderer.showStatsPopup();
+
+        scene = new Trike.Scene();
+
+		camera = new Trike.Camera(45, 800 / 600);
+		camera.setPosition( 0, 5, -20 );
+		camera.lookAt( new Trike.Vec3( 0,0,0 ) );
+        scene.add(camera);
+
+		var mat = new Trike.MaterialBasic();
+		mat._uniforms["map"].value = Trike.TextureLoader.getSingleton().loadTexture("assets/crate.gif");
+
+		var geomCube = new Trike.GeometryCube();
+		var geomSphere = new Trike.GeometryPlane();
+
+		var numItems = 100;
+		var spacing = 2;
+		for (var i = 0; i < numItems; i++)
+		{
+			for (var ii = 0; ii < numItems; ii++)
+			{
+				if (ii % 2 == 0)
+					mesh = new Trike.Mesh(mat, geomCube);
+				else
+					mesh = new Trike.Mesh(mat, geomSphere);
+
+				mesh.setPosition( (i * spacing) - (numItems * spacing / 2), 0, -(ii * spacing) + (numItems * spacing / 2) );
+				renderer.scene.add(mesh);
+			}
+		}
+
+		requestAnimationFrame(onFrame);
+		window.addEventListener( 'resize', onWindowResize, false );
+	};
+
+	function onWindowResize()
+	{
+		//camera.aspect = window.innerWidth / window.innerHeight;
+		//renderer.setSize( window.innerWidth, window.innerHeight );
+	}
+
+	function onFrame() {
+
+		//Rotate camera around center
+		//newX = centerX + (point2x-centerX)*Math.cos(x) - (point2y-centerY)*Math.sin(x);
+		//newY = centerY + (point2x-centerX)*Math.sin(x) + (point2y-centerY)*Math.cos(x);
+		newX = 0 + (0)*Math.cos(x) - (-10)*Math.sin(x);
+		newZ = 0 + (0)*Math.sin(x) + (-10)*Math.cos(x);
+		x += 0.01;
+
+		camera.setPosition( newX, 3, newZ );
+		camera.lookAt( new Trike.Vec3(0,0,0) );
+
+		//for (var i = 0; i < renderer.scene.meshes.length; i++) {
+			//mesh = renderer.scene.meshes[i];
+			//mesh.rotY += 0.01;
+			//mesh.scaleY += 0.01;
+			//if ( mesh.scaleY > 2 )
+			//	mesh.scaleY = 1;
+		//}
+
+		renderer.update(scene, camera);
+		if (renderer.render(scene, camera) === false) {
+			Trike.Utils.error(renderer.errors);
+			return;
+		}
+
+		requestAnimationFrame(onFrame);
+	}
+
+	function runTests()
+	{
+		const t1 = performance.now()
+
+		for ( var i = 0; i < 100; i++ )
+			renderer.render();
+
+		const t2 = performance.now();
+
+		document.getElementById("results").innerText = "score: " + t2 - t1;
+	}
+
+	</script>
+</head>
+
+<body>
+	<div class="tester">
+		<div id="run-tests" onclick="runTests()">Run Tests</div>
+		<div id="results"></div>
+	</div>
+</body>
+
+</html>
