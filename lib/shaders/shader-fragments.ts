@@ -659,7 +659,7 @@ namespace Trike {
 			*/
             static clippingTest(): string {
                 return `
-					if ( customClipping === 1.0 && dot( vEyePosition, customClipPlane ) < 0.0 ) discard;
+					if ( customClipping == 1.0 && dot( vEyePosition, customClipPlane ) < 0.0 ) discard;
 				`;
             }
 
@@ -709,7 +709,7 @@ namespace Trike {
                 		vec3 mirrorSample = texture2DProj(reflectionSampler, mirrorCoord + r2Distortion ).xyz;
 
 						// Multiply
-                		if (MIRROR_METHOD === 1.0)
+                		if (MIRROR_METHOD == 1.0)
 							texelColor.xyz = mix( texelColor.xyz, texelColor.xyz * mirrorSample, mirrorReflectivity );
 
 						// Mix
@@ -751,7 +751,7 @@ namespace Trike {
 						// r3 = max( vec3( 0.0 ), r3 - 0.004 );
                 		// r3 = ( r3 * ( 6.2 * r3 + 0.5 ) ) / ( r3 * ( 6.2 * r3 + 1.7 ) + 0.06 );
 
-                		if ( REFRACTION_METHOD === 1.0)
+                		if ( REFRACTION_METHOD == 1.0)
                 			texelColor.xyz = mix( texelColor.xyz, texelColor.xyz * r3, refractionReflectivity );
                 		else // Mix
                 			texelColor.xyz = mix( texelColor.xyz, r3, refractionReflectivity );
@@ -863,7 +863,7 @@ namespace Trike {
 					vec3 worldNormal = normalize( vec3( vec4(normal, 0.0) * viewMatrix ) );
 
 
-				    if ( useRefract === 1.0 )
+				    if ( useRefract == 1.0 )
 				        reflectVec = refract( cameraToVertex, worldNormal, refractionRatio );
 				    else
 				        reflectVec = reflect( cameraToVertex, worldNormal );
@@ -876,7 +876,7 @@ namespace Trike {
 				    #endif
 
 					// Multiply
-                	if (CHROME_METHOD === 1.0)
+                	if (CHROME_METHOD == 1.0)
                 		texelColor.xyz = mix( texelColor.xyz, texelColor.xyz * cubeColor.xyz, chromeReflectivity );
 
 					// Mix
@@ -1097,7 +1097,7 @@ namespace Trike {
 			*/
             static checkBoundaries(): string {
                 return `
-				if (limitScreenQuad === 1.0)
+				if (limitScreenQuad == 1.0)
 				{
 					if ( gl_Position.x < minMax.x ) gl_Position.x = minMax.x;
 					else if ( gl_Position.x > minMax.z ) gl_Position.x = minMax.z;
@@ -1715,7 +1715,7 @@ namespace Trike {
 							#else
 								#ifdef ATTR_UV
 									vec2 uvTemp;
-									if ( flipUV === 1.0 )
+									if ( flipUV == 1.0 )
 										uvTemp = vec2( 1.0, 1.0 ) - vUv;
 									else
 										uvTemp = vUv;
