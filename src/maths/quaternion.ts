@@ -22,12 +22,12 @@ export class Quaternion {
     return qm.copy(qa).slerp(qb, t);
   }
 
-  slerpFlat(
-    dst: number[],
+  static slerpFlat(
+    dst: number[] | Float32Array | Float64Array,
     dstOffset: number,
-    src0: number[],
+    src0: number[] | Float32Array | Float64Array,
     srcOffset0: number,
-    src1: number[],
+    src1: number[] | Float32Array | Float64Array,
     srcOffset1: number,
     t: number
   ) {

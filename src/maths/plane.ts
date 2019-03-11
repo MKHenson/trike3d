@@ -3,6 +3,7 @@ import {Matrix4} from './matrix4';
 import {Sphere} from './sphere';
 import {Box3} from './box3';
 import {Vector3} from './vector3';
+import {Line3} from './line';
 
 export class Plane {
   public static buffer1 = new Vector3();
@@ -99,7 +100,7 @@ export class Plane {
       .add(point);
   }
 
-  intersectLine(line, target: Vector3) {
+  intersectLine(line: Line3, target: Vector3) {
     var v1 = Plane.buffer1;
 
     var direction = line.delta(v1);
@@ -128,7 +129,7 @@ export class Plane {
       .add(line.start);
   }
 
-  intersectsLine(line) {
+  intersectsLine(line: Line3) {
     // Note: this tests if a line intersects the plane, not whether it (or its end-points) are coplanar with it.
 
     var startSign = this.distanceToPoint(line.start);

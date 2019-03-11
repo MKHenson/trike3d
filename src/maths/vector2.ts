@@ -302,12 +302,12 @@ export class Vector2 {
     return array;
   }
 
-  fromBufferAttribute(attribute, index: number) {
-    this.x = attribute.getX(index);
-    this.y = attribute.getY(index);
+  // fromBufferAttribute(attribute, index: number) {
+  //   this.x = attribute.getX(index);
+  //   this.y = attribute.getY(index);
 
-    return this;
-  }
+  //   return this;
+  // }
 
   rotateAround(center: Vector2, angle: number) {
     let c = Math.cos(angle),
