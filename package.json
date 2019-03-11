@@ -1,15 +1,16 @@
 {
-  "name": "trike3d",
+  "name": "trike",
   "version": "0.0.1",
-  "description": "A webgl 2.0 based 3D engine for Javascript",
-  "main": "gulpfile.js",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tslint & tsc"
+  },
   "author": "Mathew Henson",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "typescript": "^2.0.6",
-    "gulp-typescript": "^3.0.2",
-    "tslint": "^3.15.1",
-    "gulp-tslint": "^6.1.2"
+    "typescript": "^3.3.3333",
+    "tslint": "^5.13.1",
+    "prettier": "^1.16.4"
   }
 }
