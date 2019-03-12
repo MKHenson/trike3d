@@ -87,19 +87,19 @@ export class Euler {
     return this;
   }
 
-  setFromRotationMatrix(m: Matrix4, order: EulerOrder, update?: boolean) {
-    var clamp = _Math.clamp;
+  setFromRotationMatrix(m: Matrix4, order?: EulerOrder, update?: boolean) {
+    const clamp = _Math.clamp;
 
     // assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 
-    var te = m.elements;
-    var m11 = te[0],
+    const te = m.elements;
+    const m11 = te[0],
       m12 = te[4],
       m13 = te[8];
-    var m21 = te[1],
+    const m21 = te[1],
       m22 = te[5],
       m23 = te[9];
-    var m31 = te[2],
+    const m31 = te[2],
       m32 = te[6],
       m33 = te[10];
 
@@ -176,8 +176,8 @@ export class Euler {
     return this;
   }
 
-  setFromQuaternion(q: Quaternion, order: EulerOrder, update?: boolean) {
-    var matrix = Euler.buffer1;
+  setFromQuaternion(q: Quaternion, order?: EulerOrder, update?: boolean) {
+    const matrix = Euler.buffer1;
 
     matrix.makeRotationFromQuaternion(q);
 
@@ -191,7 +191,7 @@ export class Euler {
   reorder(newOrder: EulerOrder) {
     // WARNING: this discards revolution information -bhouston
 
-    var q = Euler.buffer2;
+    const q = Euler.buffer2;
 
     q.setFromEuler(this);
 
