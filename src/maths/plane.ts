@@ -1,9 +1,9 @@
-import {Matrix3} from './matrix3';
-import {Matrix4} from './matrix4';
-import {Sphere} from './sphere';
-import {Box3} from './box3';
-import {Vector3} from './vector3';
-import {Line3} from './line';
+import { Matrix3 } from './matrix3';
+import { Matrix4 } from './matrix4';
+import { Sphere } from './sphere';
+import { Box3 } from './box3';
+import { Vector3 } from './vector3';
+import { Line3 } from './line';
 
 export class Plane {
   public static buffer1 = new Vector3();

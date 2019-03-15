@@ -1,5 +1,5 @@
-import {Matrix4} from './matrix4';
-import {Quaternion} from './quaternion';
+import { Matrix4 } from './matrix4';
+import { Quaternion } from './quaternion';
 
 export class Vector4 {
   static buffer1 = new Vector4();

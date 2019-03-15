@@ -1,7 +1,7 @@
-import {Vector3} from './vector3';
-import {Vector2} from './vector2';
-import {Box3} from './box3';
-import {Plane} from './plane';
+import { Vector3 } from './vector3';
+import { Vector2 } from './vector2';
+import { Box3 } from './box3';
+import { Plane } from './plane';
 
 export class Triangle {
   static buffer1 = new Vector3();

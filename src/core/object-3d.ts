@@ -1,11 +1,11 @@
-import {Quaternion} from '../maths/quaternion';
-import {Vector3} from '../maths/vector3';
-import {Matrix4} from '../maths/matrix4';
-import {EventDispatcher} from './event-dispatcher';
-import {Euler} from '../maths/euler';
-import {Layers} from './layers';
-import {Matrix3} from '../maths/matrix3';
-import {_Math} from '../maths/math';
+import { Quaternion } from '../maths/quaternion';
+import { Vector3 } from '../maths/vector3';
+import { Matrix4 } from '../maths/matrix4';
+import { EventDispatcher } from './event-dispatcher';
+import { Euler } from '../maths/euler';
+import { Layers } from './layers';
+import { Matrix3 } from '../maths/matrix3';
+import { _Math } from '../maths/math';
 
 let object3DId = 0;
 
@@ -257,7 +257,7 @@ export class Object3D extends EventDispatcher {
       }
 
       object.parent = this;
-      object.dispatchEvent({type: 'added'});
+      object.dispatchEvent({ type: 'added' });
 
       this.children.push(object);
     } else {
@@ -281,7 +281,7 @@ export class Object3D extends EventDispatcher {
     if (index !== -1) {
       object.parent = null;
 
-      object.dispatchEvent({type: 'removed'});
+      object.dispatchEvent({ type: 'removed' });
 
       this.children.splice(index, 1);
     }

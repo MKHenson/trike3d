@@ -1,7 +1,7 @@
-import {Quaternion} from './quaternion';
-import {Vector3} from './vector3';
-import {Matrix4} from './matrix4';
-import {_Math} from './math';
+import { Quaternion } from './quaternion';
+import { Vector3 } from './vector3';
+import { Matrix4 } from './matrix4';
+import { _Math } from './math';
 
 export type EulerOrder = 'XYZ' | 'YZX' | 'ZXY' | 'XZY' | 'YXZ' | 'ZYX';
 

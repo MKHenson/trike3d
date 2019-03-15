@@ -1,5 +1,5 @@
-import {Interpolant} from '../interpolant';
-import {Quaternion} from '../quaternion';
+import { Interpolant } from '../interpolant';
+import { Quaternion } from '../quaternion';
 
 export class QuaternionLinearInterpolant<T extends Array<number> | Float32Array | Float64Array> extends Interpolant<T> {
   constructor(parameterPositions: number[], sampleValues: T, sampleSize: number, resultBuffer: T) {

@@ -1,8 +1,8 @@
-import {Vector3} from './vector3';
-import {Sphere} from './sphere';
-import {Matrix4} from './matrix4';
-import {Plane} from './plane';
-import {Triangle} from './triangle';
+import { Vector3 } from './vector3';
+import { Sphere } from './sphere';
+import { Matrix4 } from './matrix4';
+import { Plane } from './plane';
+import { Triangle } from './triangle';
 
 export class Box3 {
   static buffer1 = new Vector3();

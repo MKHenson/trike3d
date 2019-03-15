@@ -1,8 +1,8 @@
-import {Vector3} from './vector3';
-import {Sphere} from './sphere';
-import {Plane} from './plane';
-import {Box3} from './box3';
-import {Matrix4} from './matrix4';
+import { Vector3 } from './vector3';
+import { Sphere } from './sphere';
+import { Plane } from './plane';
+import { Box3 } from './box3';
+import { Matrix4 } from './matrix4';
 
 export class Ray {
   static buffer1 = new Vector3();

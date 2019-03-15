@@ -1,6 +1,6 @@
-import {Vector3} from './vector3';
-import {_Math} from './math';
-import {Matrix4} from './matrix4';
+import { Vector3 } from './vector3';
+import { _Math } from './math';
+import { Matrix4 } from './matrix4';
 
 export class Line3 {
   static buffer1 = new Vector3();

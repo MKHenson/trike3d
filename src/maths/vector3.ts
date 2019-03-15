@@ -1,10 +1,10 @@
-import {Matrix3} from './matrix3';
-import {Matrix4} from './matrix4';
-import {Quaternion} from './quaternion';
-import {_Math} from './math';
-import {Euler} from './euler';
-import {Spherical} from './spherical';
-import {Cylindrical} from './cylindrical';
+import { Matrix3 } from './matrix3';
+import { Matrix4 } from './matrix4';
+import { Quaternion } from './quaternion';
+import { _Math } from './math';
+import { Euler } from './euler';
+import { Spherical } from './spherical';
+import { Cylindrical } from './cylindrical';
 
 export class Vector3 {
   public x: number;

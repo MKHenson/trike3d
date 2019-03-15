@@ -1,4 +1,4 @@
-import {_Math} from './math';
+import { _Math } from './math';
 
 const ColorKeywords = {
   aliceblue: 0xf0f8ff,
@@ -419,7 +419,7 @@ export class Color {
     return ('000000' + this.getHex().toString(16)).slice(-6);
   }
 
-  getHSL(target: {h: number; s: number; l: number}) {
+  getHSL(target: { h: number; s: number; l: number }) {
     // h,s,l ranges are in 0.0 - 1.0
 
     const r = this.r,
@@ -468,7 +468,7 @@ export class Color {
   }
 
   offsetHSL(h: number, s: number, l: number) {
-    const hsl = {h: 0, s: 0, l: 0};
+    const hsl = { h: 0, s: 0, l: 0 };
 
     this.getHSL(hsl);
 
@@ -538,8 +538,8 @@ export class Color {
   }
 
   lerpHSL(color: Color, alpha: number) {
-    const hslA = {h: 0, s: 0, l: 0};
-    const hslB = {h: 0, s: 0, l: 0};
+    const hslA = { h: 0, s: 0, l: 0 };
+    const hslB = { h: 0, s: 0, l: 0 };
 
     this.getHSL(hslA);
     color.getHSL(hslB);

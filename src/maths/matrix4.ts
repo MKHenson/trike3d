@@ -1,6 +1,6 @@
-import {Vector3} from './vector3';
-import {Euler} from './euler';
-import {Quaternion} from './quaternion';
+import { Vector3 } from './vector3';
+import { Euler } from './euler';
+import { Quaternion } from './quaternion';
 
 export class Matrix4 {
   static buffer1 = new Vector3();

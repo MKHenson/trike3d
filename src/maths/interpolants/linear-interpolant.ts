@@ -1,4 +1,4 @@
-import {Interpolant} from '../interpolant';
+import { Interpolant } from '../interpolant';
 
 export class LinearInterpolant<T extends Array<number> | Float32Array | Float64Array> extends Interpolant<T> {
   constructor(parameterPositions: number[], sampleValues: T, sampleSize: number, resultBuffer: T) {

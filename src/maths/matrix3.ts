@@ -1,5 +1,5 @@
-import {Vector3} from './vector3';
-import {Matrix4} from './matrix4';
+import { Vector3 } from './vector3';
+import { Matrix4 } from './matrix4';
 
 export class Matrix3 {
   static vecBuffer1: Vector3 = new Vector3();

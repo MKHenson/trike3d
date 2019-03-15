@@ -1,5 +1,5 @@
-import {_Math} from '../maths/math';
-import {Camera} from './camera';
+import { _Math } from '../maths/math';
+import { Camera } from './camera';
 
 export type PerspectiveView = {
   enabled: boolean;

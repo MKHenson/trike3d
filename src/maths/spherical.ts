@@ -1,5 +1,5 @@
-import {_Math} from './math';
-import {Vector3} from './vector3';
+import { _Math } from './math';
+import { Vector3 } from './vector3';
 
 export class Spherical {
   public radius: number;

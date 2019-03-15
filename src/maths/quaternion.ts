@@ -1,7 +1,7 @@
-import {_Math} from './math';
-import {Vector3} from './vector3';
-import {Matrix4} from './matrix4';
-import {Euler} from './euler';
+import { _Math } from './math';
+import { Vector3 } from './vector3';
+import { Matrix4 } from './matrix4';
+import { Euler } from './euler';
 
 export class Quaternion {
   public _x: number;

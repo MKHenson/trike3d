@@ -5,7 +5,7 @@ export interface Event {
 }
 
 export class EventDispatcher {
-  protected _listeners: undefined | {[name: string]: Listener[]};
+  protected _listeners: undefined | { [name: string]: Listener[] };
 
   constructor() {}
 

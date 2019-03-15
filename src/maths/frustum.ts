@@ -1,8 +1,8 @@
-import {Vector3} from './vector3';
-import {Sphere} from './sphere';
-import {Plane} from './plane';
-import {Matrix4} from './matrix4';
-import {Box3} from './box3';
+import { Vector3 } from './vector3';
+import { Sphere } from './sphere';
+import { Plane } from './plane';
+import { Matrix4 } from './matrix4';
+import { Box3 } from './box3';
 
 export class Frustum {
   static buffer1 = new Sphere();
