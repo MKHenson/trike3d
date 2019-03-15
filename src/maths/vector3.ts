@@ -5,6 +5,7 @@ import { _Math } from './math';
 import { Euler } from './euler';
 import { Spherical } from './spherical';
 import { Cylindrical } from './cylindrical';
+import { Camera } from '../cameras/camera';
 
 export class Vector3 {
   public x: number;
@@ -216,10 +217,10 @@ export class Vector3 {
     return this.applyMatrix4(matrixWorldInverse).applyMatrix4(projectionMatrix);
   }
 
-  unproject(projectionMatrix: Matrix4, matrixWorld: Matrix4) {
+  unproject(camera: Camera) {
     let matrix = Vector3.buffer4;
 
-    return this.applyMatrix4(matrix.getInverse(projectionMatrix)).applyMatrix4(matrixWorld);
+    return this.applyMatrix4(matrix.getInverse(camera.projectionMatrix)).applyMatrix4(camera.matrixWorld);
   }
 
   transformDirection(m: Matrix4) {

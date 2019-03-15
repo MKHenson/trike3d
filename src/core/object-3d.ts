@@ -6,6 +6,7 @@ import { Euler } from '../maths/euler';
 import { Layers } from './layers';
 import { Matrix3 } from '../maths/matrix3';
 import { _Math } from '../maths/math';
+import { Raycaster } from './raycaster';
 
 let object3DId = 0;
 
@@ -33,7 +34,7 @@ export class Object3D extends EventDispatcher {
   public normalMatrix: Matrix3;
   public matrixAutoUpdate: boolean;
   public matrixWorldNeedsUpdate: boolean;
-  public layers: Matrix4;
+  public layers: Layers;
   public visible: boolean;
   public castShadow: boolean;
   public receiveShadow: boolean;
@@ -347,7 +348,7 @@ export class Object3D extends EventDispatcher {
     return target.set(e[8], e[9], e[10]).normalize();
   }
 
-  raycast() {}
+  raycast(raycaster: Raycaster, intersects: Vector3[]) {}
 
   traverse(callback: (obj: Object3D) => void) {
     callback(this);

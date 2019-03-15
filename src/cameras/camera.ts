@@ -1,6 +1,6 @@
-import {Matrix4} from '../maths/matrix4';
-import {Object3D} from '../core/object-3d';
-import {Vector3} from '../maths/vector3';
+import { Matrix4 } from '../maths/matrix4';
+import { Object3D } from '../core/object-3d';
+import { Vector3 } from '../maths/vector3';
 
 export class Camera extends Object3D {
   public isCamera = true;
@@ -40,5 +40,26 @@ export class Camera extends Object3D {
 
   clone(obj?: Camera) {
     return (obj || new Camera()).copy(this);
+  }
+
+  lookAt(x: number, y: number, z: number) {
+    const q1 = Object3D.buffer1;
+    const m1 = Object3D.buffer3;
+    const target = Object3D.buffer2;
+    const position = Object3D.buffer4;
+
+    target.set(x, y, z);
+    const parent = this.parent;
+
+    this.updateWorldMatrix(true, false);
+    position.setFromMatrixPosition(this.matrixWorld);
+    m1.lookAt(position, target, this.up);
+    this.quaternion.setFromRotationMatrix(m1);
+
+    if (parent) {
+      m1.extractRotation(parent.matrixWorld);
+      q1.setFromRotationMatrix(m1);
+      this.quaternion.premultiply(q1.inverse());
+    }
   }
 }
