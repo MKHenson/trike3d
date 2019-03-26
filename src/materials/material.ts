@@ -12,6 +12,7 @@ import { _Math } from '../maths/math';
 import { Color } from '../maths/color';
 import { Vector3 } from '../maths/vector3';
 import { Plane } from '../maths/plane';
+import { Texture } from '../textures/texture';
 
 let materialId = 0;
 

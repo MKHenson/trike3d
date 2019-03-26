@@ -1,5 +1,6 @@
 import { Material } from './material';
 import { Color } from '../maths/color';
+import { Texture } from '../textures/texture';
 
 type K = keyof SpriteMaterial;
 
@@ -7,7 +8,7 @@ export class SpriteMaterial extends Material {
   public type = 'SpriteMaterial';
   public isSpriteMaterial = true;
   public color: Color;
-  public map: null;
+  public map: Texture | null;
   public rotation: number;
   public sizeAttenuation: boolean;
   public lights: boolean;

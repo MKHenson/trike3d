@@ -1,5 +1,6 @@
 import { Material } from './material';
 import { Vector3 } from '../maths/vector3';
+import { Texture } from '../textures/texture';
 
 type K = keyof MeshDistanceMaterial;
 
@@ -12,9 +13,9 @@ export class MeshDistanceMaterial extends Material {
   public farDistance: number;
   public skinning: false;
   public morphTargets: false;
-  public map: null;
-  public alphaMap: null;
-  public displacementMap: null;
+  public map: Texture | null;
+  public alphaMap: Texture | null;
+  public displacementMap: Texture | null;
   public displacementScale: number;
   public displacementBias: number;
 

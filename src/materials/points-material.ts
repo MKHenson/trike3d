@@ -1,5 +1,6 @@
 import { Material } from './material';
 import { Color } from '../maths/color';
+import { Texture } from '../textures/texture';
 
 type K = keyof PointsMaterial;
 
@@ -7,7 +8,7 @@ export class PointsMaterial extends Material {
   public isPointsMaterial = true;
   public type = 'PointsMaterial';
   public color: Color;
-  public map: null;
+  public map: Texture | null;
   public size: number;
   public sizeAttenuation: boolean;
   public morphTargets: boolean;

@@ -4,6 +4,7 @@ import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
 export class Vector2 {
   public x: number;
   public y: number;
+  public isVector2 = true;
 
   static buffer1: Vector2 = new Vector2();
   static buffer2: Vector2 = new Vector2();

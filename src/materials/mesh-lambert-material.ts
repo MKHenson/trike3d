@@ -2,6 +2,7 @@ import { Material } from './material';
 import { OperationType } from '../constants';
 import { Color } from '../maths/color';
 import { LineEdge } from './line-basic-material';
+import { Texture } from '../textures/texture';
 
 type K = keyof MeshLambertMaterial;
 
@@ -9,17 +10,17 @@ export class MeshLambertMaterial extends Material {
   public type = 'MeshLambertMaterial';
   public isMeshLambertMaterial = true;
   public color: Color;
-  public map: null;
-  public lightMap: null;
+  public map: Texture | null;
+  public lightMap: Texture | null;
   public lightMapIntensity: number;
-  public aoMap: null;
+  public aoMap: Texture | null;
   public aoMapIntensity: number;
   public emissive: Color;
   public emissiveIntensity: number;
-  public emissiveMap: null;
-  public specularMap: null;
-  public alphaMap: null;
-  public envMap: null;
+  public emissiveMap: Texture | null;
+  public specularMap: Texture | null;
+  public alphaMap: Texture | null;
+  public envMap: Texture | null;
   public combine: OperationType;
   public reflectivity: number;
   public refractionRatio: number;

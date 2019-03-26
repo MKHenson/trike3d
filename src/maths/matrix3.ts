@@ -5,6 +5,7 @@ import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
 export class Matrix3 {
   static vecBuffer1: Vector3 = new Vector3();
   public elements: number[];
+  public isMatrix3 = true;
 
   constructor() {
     this.elements = [1, 0, 0, 0, 1, 0, 0, 0, 1];

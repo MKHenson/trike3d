@@ -1,19 +1,14 @@
 import { NormalSpaceType } from '../constants';
 import { Material } from './material';
 import { Vector2 } from '../maths/vector2';
-import { Color } from '../maths/color';
 import { Texture } from '../textures/texture';
 
-type K = keyof MeshMatcapMaterial;
+type K = keyof MeshNormalMaterial;
 
-export class MeshMatcapMaterial extends Material {
-  public isMeshMatcapMaterial = true;
-  public type = 'MeshMatcapMaterial';
+export class MeshNormalMaterial extends Material {
+  public isMeshNormalMaterial = true;
+  public type = 'MeshNormalMaterial';
 
-  public defines: any;
-  public color: Color;
-  public matcap: Texture | null;
-  public map: Texture | null;
   public bumpMap: Texture | null;
   public bumpScale: number;
   public normalMap: Texture | null;
@@ -22,18 +17,17 @@ export class MeshMatcapMaterial extends Material {
   public displacementMap: Texture | null;
   public displacementScale: number;
   public displacementBias: number;
-  public alphaMap: Texture | null;
+  public wireframe: boolean;
+  public wireframeLinewidth: number;
+  public fog: boolean;
+  public lights: boolean;
   public skinning: boolean;
   public morphTargets: boolean;
   public morphNormals: boolean;
 
-  constructor(parameters?: Partial<{ [key in K]: MeshMatcapMaterial[K] }>) {
+  constructor(parameters?: Partial<{ [key in K]: MeshNormalMaterial[K] }>) {
     super();
 
-    this.defines = { MATCAP: '' };
-    this.color = new Color(0xffffff);
-    this.matcap = null;
-    this.map = null;
     this.bumpMap = null;
     this.bumpScale = 1;
     this.normalMap = null;
@@ -42,25 +36,23 @@ export class MeshMatcapMaterial extends Material {
     this.displacementMap = null;
     this.displacementScale = 1;
     this.displacementBias = 0;
-    this.alphaMap = null;
+    this.wireframe = false;
+    this.wireframeLinewidth = 1;
+    this.fog = false;
+    this.lights = false;
     this.skinning = false;
     this.morphTargets = false;
     this.morphNormals = false;
-    this.lights = false;
 
     this.setValues(parameters);
   }
 
-  clone(source?: MeshMatcapMaterial) {
-    return (source || new MeshMatcapMaterial()).copy(this);
+  clone(source?: MeshNormalMaterial) {
+    return (source || new MeshNormalMaterial()).copy(this);
   }
 
-  copy(source: MeshMatcapMaterial) {
+  copy(source: MeshNormalMaterial) {
     super.copy(source);
-    this.defines = { MATCAP: '' };
-    this.color.copy(source.color);
-    this.matcap = source.matcap;
-    this.map = source.map;
     this.bumpMap = source.bumpMap;
     this.bumpScale = source.bumpScale;
     this.normalMap = source.normalMap;
@@ -69,7 +61,8 @@ export class MeshMatcapMaterial extends Material {
     this.displacementMap = source.displacementMap;
     this.displacementScale = source.displacementScale;
     this.displacementBias = source.displacementBias;
-    this.alphaMap = source.alphaMap;
+    this.wireframe = source.wireframe;
+    this.wireframeLinewidth = source.wireframeLinewidth;
     this.skinning = source.skinning;
     this.morphTargets = source.morphTargets;
     this.morphNormals = source.morphNormals;

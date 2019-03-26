@@ -2,6 +2,7 @@ import { Material } from './material';
 import { OperationType } from '../constants';
 import { Color } from '../maths/color';
 import { LineEdge } from './line-basic-material';
+import { Texture } from '../textures/texture';
 
 type K = keyof MeshBasicMaterial;
 
@@ -10,8 +11,8 @@ export class MeshBasicMaterial extends Material {
   public type = 'MeshBasicMaterial';
 
   public color: Color;
-  public map: null;
-  public lightMap: null;
+  public map: Texture | null;
+  public lightMap: Texture | null;
   public lightMapIntensity: number;
   public aoMap = null;
   public aoMapIntensity: number;

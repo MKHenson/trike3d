@@ -1,5 +1,6 @@
 import { Material } from './material';
 import { DepthPackingType } from '../constants';
+import { Texture } from '../textures/texture';
 
 type K = keyof MeshDepthMaterial;
 
@@ -9,9 +10,9 @@ export class MeshDepthMaterial extends Material {
   public depthPacking: DepthPackingType;
   public skinning: boolean;
   public morphTargets: boolean;
-  public map: null;
-  public alphaMap: null;
-  public displacementMap: null;
+  public map: Texture | null;
+  public alphaMap: Texture | null;
+  public displacementMap: Texture | null;
   public displacementScale: number;
   public displacementBias: number;
   public wireframe: boolean;

@@ -42,13 +42,13 @@ export class Camera extends Object3D {
     return (obj || new Camera()).copy(this);
   }
 
-  lookAt(x: number, y: number, z: number) {
+  lookAt(targetVec: Vector3) {
     const q1 = Object3D.buffer1;
     const m1 = Object3D.buffer3;
     const target = Object3D.buffer2;
     const position = Object3D.buffer4;
 
-    target.set(x, y, z);
+    target.set(targetVec.x, targetVec.y, targetVec.z);
     const parent = this.parent;
 
     this.updateWorldMatrix(true, false);
