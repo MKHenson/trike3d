@@ -207,7 +207,7 @@ export class Object3D extends EventDispatcher {
     return vector.applyMatrix4(m1.getInverse(this.matrixWorld));
   }
 
-  lookAt(x: number, y: number, z: number) {
+  lookAt(lookat: Vector3) {
     // This method does not support objects having non-uniformly-scaled parent(s)
 
     const q1 = Object3D.buffer1;
@@ -215,7 +215,7 @@ export class Object3D extends EventDispatcher {
     const target = Object3D.buffer2;
     const position = Object3D.buffer4;
 
-    target.set(x, y, z);
+    target.set(lookat.x, lookat.y, lookat.z);
 
     const parent = this.parent;
 

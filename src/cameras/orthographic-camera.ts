@@ -1,16 +1,20 @@
 import { Camera } from './Camera.js';
-import { Object3D } from '../core/Object3D.js';
 
-/**
- * @author alteredq / http://alteredqualia.com/
- * @author arose / http://github.com/arose
- */
+export type View = {
+  enabled: boolean;
+  fullWidth: number;
+  fullHeight: number;
+  offsetX: number;
+  offsetY: number;
+  width: number;
+  height: number;
+};
 
-export class OrthographicCamera {
+export class OrthographicCamera extends Camera {
   public isOrthographicCamera = true;
   public zoom: number;
   public type: 'OrthographicCamera';
-  public view: number;
+  public view: View | null;
   public left: number;
   public right: number;
   public bottom: number;
@@ -19,7 +23,7 @@ export class OrthographicCamera {
   public far: number;
 
   constructor(left?: number, right?: number, top?: number, bottom?: number, near?: number, far?: number) {
-    super(this);
+    super();
 
     this.type = 'OrthographicCamera';
 
@@ -37,8 +41,8 @@ export class OrthographicCamera {
     this.updateProjectionMatrix();
   }
 
-  copy(source, recursive) {
-    Camera.prototype.copy.call(this, source, recursive);
+  copy(source: OrthographicCamera, recursive: boolean) {
+    super.copy(source, recursive);
 
     this.left = source.left;
     this.right = source.right;
@@ -53,7 +57,7 @@ export class OrthographicCamera {
     return this;
   }
 
-  setViewOffset(fullWidth, fullHeight, x, y, width, height) {
+  setViewOffset(fullWidth: number, fullHeight: number, x: number, y: number, width: number, height: number) {
     if (this.view === null) {
       this.view = {
         enabled: true,
@@ -111,21 +115,5 @@ export class OrthographicCamera {
     this.projectionMatrix.makeOrthographic(left, right, top, bottom, this.near, this.far);
 
     this.projectionMatrixInverse.getInverse(this.projectionMatrix);
-  }
-
-  toJSON(meta) {
-    var data = Object3D.prototype.toJSON.call(this, meta);
-
-    data.object.zoom = this.zoom;
-    data.object.left = this.left;
-    data.object.right = this.right;
-    data.object.top = this.top;
-    data.object.bottom = this.bottom;
-    data.object.near = this.near;
-    data.object.far = this.far;
-
-    if (this.view !== null) data.object.view = Object.assign({}, this.view);
-
-    return data;
   }
 }

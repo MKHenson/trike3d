@@ -4,7 +4,7 @@ import { Vector2 } from '../maths/vector2';
 import { Object3D } from './object-3d';
 import { PerspectiveCamera } from '../cameras/perspective-camera';
 
-function ascSort(a, b) {
+function ascSort(a: Vector3, b: Vector3) {
   return a.distance - b.distance;
 }
 

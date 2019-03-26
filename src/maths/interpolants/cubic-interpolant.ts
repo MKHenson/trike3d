@@ -1,16 +1,6 @@
 import { ZeroCurvatureEnding } from '../../constants.js';
 import { Interpolant } from '../interpolant';
 
-/**
- * Fast and simple cubic spline interpolant.
- *
- * It was derived from a Hermitian construction setting the first derivative
- * at each sample position to the linear slope between neighboring positions
- * over their parameter interval.
- *
- * @author tschw
- */
-
 export class CubicInterpolant<T extends Array<number> | Float32Array | Float64Array> extends Interpolant<T> {
   DefaultSettings_ = {
     endingStart: ZeroCurvatureEnding,
