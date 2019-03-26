@@ -14,15 +14,19 @@ export const BackSide = 1;
 export const DoubleSide = 2;
 export const FlatShading = 1;
 export const SmoothShading = 2;
-export const NoColors = 0;
-export const FaceColors = 1;
-export const VertexColors = 2;
-export const NoBlending = 0;
-export const NormalBlending = 1;
-export const AdditiveBlending = 2;
-export const SubtractiveBlending = 3;
-export const MultiplyBlending = 4;
-export const CustomBlending = 5;
+export enum ColorSource {
+  NoColors = 0,
+  FaceColors = 1,
+  VertexColors = 2
+}
+export enum BlendMode {
+  NoBlending = 0,
+  NormalBlending = 1,
+  AdditiveBlending = 2,
+  SubtractiveBlending = 3,
+  MultiplyBlending = 4,
+  CustomBlending = 5
+}
 export const AddEquation = 100;
 export const SubtractEquation = 101;
 export const ReverseSubtractEquation = 102;
@@ -47,9 +51,12 @@ export const EqualDepth = 4;
 export const GreaterEqualDepth = 5;
 export const GreaterDepth = 6;
 export const NotEqualDepth = 7;
-export const MultiplyOperation = 0;
-export const MixOperation = 1;
-export const AddOperation = 2;
+
+export enum OperationType {
+  MultiplyOperation = 0,
+  MixOperation = 1,
+  AddOperation = 2
+}
 export const NoToneMapping = 0;
 export const LinearToneMapping = 1;
 export const ReinhardToneMapping = 2;
@@ -138,7 +145,11 @@ export const LogLuvEncoding = 3003;
 export const RGBM7Encoding = 3004;
 export const RGBM16Encoding = 3005;
 export const RGBDEncoding = 3006;
-export const BasicDepthPacking = 3200;
-export const RGBADepthPacking = 3201;
-export const TangentSpaceNormalMap = 0;
-export const ObjectSpaceNormalMap = 1;
+export enum DepthPackingType {
+  BasicDepthPacking = 3200,
+  RGBADepthPacking = 3201
+}
+export enum NormalSpaceType {
+  TangentSpaceNormalMap = 0,
+  ObjectSpaceNormalMap = 1
+}

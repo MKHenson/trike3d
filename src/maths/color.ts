@@ -557,7 +557,7 @@ export class Color {
     return c.r === this.r && c.g === this.g && c.b === this.b;
   }
 
-  fromArray(array: number[], offset?: number) {
+  fromArray(array: ArrayLike<number>, offset?: number) {
     if (offset === undefined) offset = 0;
 
     this.r = array[offset];

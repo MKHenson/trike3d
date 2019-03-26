@@ -1,4 +1,5 @@
 import { Matrix3 } from './matrix3';
+import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
 
 export class Vector2 {
   public x: number;
@@ -283,7 +284,7 @@ export class Vector2 {
     return v.x === this.x && v.y === this.y;
   }
 
-  fromArray(array: number[], offset: number) {
+  fromArray(array: ArrayLike<number>, offset: number): Vector2 {
     if (offset === undefined) offset = 0;
 
     this.x = array[offset];
@@ -302,12 +303,12 @@ export class Vector2 {
     return array;
   }
 
-  // fromBufferAttribute(attribute, index: number) {
-  //   this.x = attribute.getX(index);
-  //   this.y = attribute.getY(index);
+  fromBufferAttribute(attribute: BufferAttribute<TypeArray>, index: number) {
+    this.x = attribute.getX(index);
+    this.y = attribute.getY(index);
 
-  //   return this;
-  // }
+    return this;
+  }
 
   rotateAround(center: Vector2, angle: number) {
     let c = Math.cos(angle),

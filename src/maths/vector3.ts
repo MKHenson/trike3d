@@ -16,6 +16,7 @@ export class Vector3 {
   static buffer2: Vector3 = new Vector3();
   static buffer3: Quaternion = new Quaternion();
   static buffer4: Matrix4 = new Matrix4();
+  public isVector3 = true;
 
   constructor(x?: number, y?: number, z?: number) {
     this.x = x || 0;
@@ -492,7 +493,7 @@ export class Vector3 {
     return v.x === this.x && v.y === this.y && v.z === this.z;
   }
 
-  fromArray(array: number[], offset: number) {
+  fromArray(array: ArrayLike<number>, offset: number) {
     if (offset === undefined) offset = 0;
 
     this.x = array[offset];

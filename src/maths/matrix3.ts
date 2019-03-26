@@ -1,5 +1,6 @@
 import { Vector3 } from './vector3';
 import { Matrix4 } from './matrix4';
+import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
 
 export class Matrix3 {
   static vecBuffer1: Vector3 = new Vector3();
@@ -70,21 +71,21 @@ export class Matrix3 {
     return this;
   }
 
-  // applyToBufferAttribute(attribute) {
-  //   let v1 = Matrix3.vecBuffer1;
+  applyToBufferAttribute(attribute: BufferAttribute<TypeArray>) {
+    let v1 = Matrix3.vecBuffer1;
 
-  //   for (let i = 0, l = attribute.count; i < l; i++) {
-  //     v1.x = attribute.getX(i);
-  //     v1.y = attribute.getY(i);
-  //     v1.z = attribute.getZ(i);
+    for (let i = 0, l = attribute.count; i < l; i++) {
+      v1.x = attribute.getX(i);
+      v1.y = attribute.getY(i);
+      v1.z = attribute.getZ(i);
 
-  //     v1.applyMatrix3(this);
+      v1.applyMatrix3(this);
 
-  //     attribute.setXYZ(i, v1.x, v1.y, v1.z);
-  //   }
+      attribute.setXYZ(i, v1.x, v1.y, v1.z);
+    }
 
-  //   return attribute;
-  // }
+    return attribute;
+  }
 
   multiply(m: Matrix3) {
     return this.multiplyMatrices(this, m);

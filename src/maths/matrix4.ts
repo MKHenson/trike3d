@@ -1,6 +1,7 @@
 import { Vector3 } from './vector3';
 import { Euler } from './euler';
 import { Quaternion } from './quaternion';
+import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
 
 export class Matrix4 {
   static buffer1 = new Vector3();
@@ -432,21 +433,21 @@ export class Matrix4 {
     return this;
   }
 
-  // applyToBufferAttribute(attribute) {
-  //   var v1 = Matrix4.buffer1;
+  applyToBufferAttribute(attribute: BufferAttribute<TypeArray>) {
+    var v1 = Matrix4.buffer1;
 
-  //   for (var i = 0, l = attribute.count; i < l; i++) {
-  //     v1.x = attribute.getX(i);
-  //     v1.y = attribute.getY(i);
-  //     v1.z = attribute.getZ(i);
+    for (var i = 0, l = attribute.count; i < l; i++) {
+      v1.x = attribute.getX(i);
+      v1.y = attribute.getY(i);
+      v1.z = attribute.getZ(i);
 
-  //     v1.applyMatrix4(this);
+      v1.applyMatrix4(this);
 
-  //     attribute.setXYZ(i, v1.x, v1.y, v1.z);
-  //   }
+      attribute.setXYZ(i, v1.x, v1.y, v1.z);
+    }
 
-  //   return attribute;
-  // }
+    return attribute;
+  }
 
   determinant() {
     var te = this.elements;

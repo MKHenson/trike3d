@@ -2,24 +2,32 @@ import { Color } from '../maths/color';
 import { Vector3 } from '../maths/vector3';
 
 export class Face3 {
-  public a: Vector3;
-  public b: Vector3;
-  public c: Vector3;
+  public _id: number;
+  public a: number;
+  public b: number;
+  public c: number;
   public normal: Vector3;
   public color: Color;
   public materialIndex: number;
   public vertexNormals: Vector3[];
   public vertexColors: Color[];
 
-  constructor(a?: Vector3, b?: Vector3, c?: Vector3, normal?: Vector3, color?: Color, materialIndex?: number) {
-    this.a = a || new Vector3();
-    this.b = b || new Vector3();
-    this.c = c || new Vector3();
+  constructor(
+    a?: number,
+    b?: number,
+    c?: number,
+    normal?: Vector3 | Vector3[],
+    color?: Color | Color[],
+    materialIndex?: number
+  ) {
+    this.a = a || 0;
+    this.b = b || 0;
+    this.c = c || 0;
 
-    this.normal = normal || new Vector3();
+    this.normal = normal && (normal as Vector3).isVector3 ? (normal as Vector3) : new Vector3();
     this.vertexNormals = Array.isArray(normal) ? normal : [];
 
-    this.color = color && color.isColor ? color : new Color();
+    this.color = color && (color as Color).isColor ? (color as Color) : new Color();
     this.vertexColors = Array.isArray(color) ? color : [];
 
     this.materialIndex = materialIndex !== undefined ? materialIndex : 0;
