@@ -1,5 +1,6 @@
 import { Matrix4 } from './matrix4';
 import { Quaternion } from './quaternion';
+import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
 
 export class Vector4 {
   static buffer1 = new Vector4();
@@ -488,12 +489,12 @@ export class Vector4 {
     return array;
   }
 
-  // fromBufferAttribute(attribute, index: number) {
-  //   this.x = attribute.getX(index);
-  //   this.y = attribute.getY(index);
-  //   this.z = attribute.getZ(index);
-  //   this.w = attribute.getW(index);
+  fromBufferAttribute(attribute: BufferAttribute<TypeArray>, index: number) {
+    this.x = attribute.getX(index);
+    this.y = attribute.getY(index);
+    this.z = attribute.getZ(index);
+    this.w = attribute.getW(index);
 
-  //   return this;
-  // }
+    return this;
+  }
 }

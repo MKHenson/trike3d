@@ -1,6 +1,6 @@
 import { Object3D } from '../core/object-3d';
 import { WebGLRenderTargetCube } from '../renderers/WebGLRenderTargetCube';
-import { LinearFilter, RGBFormat } from '../constants';
+import { FilterType, FormatType } from '../constants';
 import { Vector3 } from '../maths/vector3';
 import { PerspectiveCamera } from './perspective-camera';
 import { Color } from '../maths/color';
@@ -44,7 +44,11 @@ export class CubeCamera extends Object3D {
     cameraNZ.lookAt(new Vector3(0, 0, -1));
     this.add(cameraNZ);
 
-    options = options || { format: RGBFormat, magFilter: LinearFilter, minFilter: LinearFilter };
+    options = options || {
+      format: FormatType.RGBFormat,
+      magFilter: FilterType.LinearFilter,
+      minFilter: FilterType.LinearFilter
+    };
 
     this.renderTarget = new WebGLRenderTargetCube(cubeResolution, cubeResolution, options);
     this.renderTarget.texture.name = 'CubeCamera';

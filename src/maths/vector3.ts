@@ -6,6 +6,7 @@ import { Euler } from './euler';
 import { Spherical } from './spherical';
 import { Cylindrical } from './cylindrical';
 import { Camera } from '../cameras/camera';
+import { TypeArray, BufferAttribute } from '../core/buffer-attribute';
 
 export class Vector3 {
   public x: number;
@@ -514,11 +515,11 @@ export class Vector3 {
     return array;
   }
 
-  // fromBufferAttribute(attribute, index: number) {
-  //   this.x = attribute.getX(index);
-  //   this.y = attribute.getY(index);
-  //   this.z = attribute.getZ(index);
+  fromBufferAttribute(attribute: BufferAttribute<TypeArray>, index: number) {
+    this.x = attribute.getX(index);
+    this.y = attribute.getY(index);
+    this.z = attribute.getZ(index);
 
-  //   return this;
-  // }
+    return this;
+  }
 }

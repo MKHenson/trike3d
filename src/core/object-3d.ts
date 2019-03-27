@@ -6,17 +6,17 @@ import { Euler } from '../maths/euler';
 import { Layers } from './layers';
 import { Matrix3 } from '../maths/matrix3';
 import { _Math } from '../maths/math';
-import { Raycaster } from './raycaster';
+import { Raycaster, Intersects } from './raycaster';
 
 let object3DId = 0;
 
 export class Object3D extends EventDispatcher {
   static DefaultUp = new Vector3(0, 1, 0);
   static DefaultMatrixAutoUpdate = true;
-  static buffer1 = new Quaternion();
-  static buffer2 = new Vector3();
-  static buffer3 = new Matrix4();
-  static buffer4 = new Vector3();
+  private static buffer1 = new Quaternion();
+  private static buffer2 = new Vector3();
+  private static buffer3 = new Matrix4();
+  private static buffer4 = new Vector3();
 
   public uuid: string;
   public name: string;
@@ -348,7 +348,7 @@ export class Object3D extends EventDispatcher {
     return target.set(e[8], e[9], e[10]).normalize();
   }
 
-  raycast(raycaster: Raycaster, intersects: Vector3[]) {}
+  raycast(raycaster: Raycaster, intersects: Intersects[]) {}
 
   traverse(callback: (obj: Object3D) => void) {
     callback(this);

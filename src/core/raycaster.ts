@@ -3,12 +3,22 @@ import { Vector3 } from '../maths/vector3';
 import { Vector2 } from '../maths/vector2';
 import { Object3D } from './object-3d';
 import { PerspectiveCamera } from '../cameras/perspective-camera';
+import { Face3 } from './face3';
 
-function ascSort(a: Vector3, b: Vector3) {
+function ascSort(a: Intersects, b: Intersects) {
   return a.distance - b.distance;
 }
 
-function intersectObject(object: Object3D, raycaster: Raycaster, intersects: Vector3[], recursive: boolean) {
+export type Intersects = {
+  distance: number;
+  point: Vector3;
+  index: number;
+  face: null | Face3;
+  faceIndex: null | number;
+  object: Object3D;
+};
+
+function intersectObject(object: Object3D, raycaster: Raycaster, intersects: Intersects[], recursive: boolean) {
   if (object.visible === false) return;
 
   object.raycast(raycaster, intersects);
@@ -76,7 +86,7 @@ export class Raycaster {
     }
   }
 
-  intersectObject(object: Object3D, recursive: boolean, optionalTarget: Vector3[]) {
+  intersectObject(object: Object3D, recursive: boolean, optionalTarget: Intersects[]) {
     var intersects = optionalTarget || [];
 
     intersectObject(object, this, intersects, recursive);
@@ -86,7 +96,7 @@ export class Raycaster {
     return intersects;
   }
 
-  intersectObjects(objects: Object3D[], recursive: boolean, optionalTarget: Vector3[]) {
+  intersectObjects(objects: Object3D[], recursive: boolean, optionalTarget: Intersects[]) {
     var intersects = optionalTarget || [];
 
     for (var i = 0, l = objects.length; i < l; i++) {

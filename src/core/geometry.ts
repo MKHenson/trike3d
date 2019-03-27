@@ -40,6 +40,7 @@ export class Geometry extends EventDispatcher {
   static buffer2 = new Object3D();
   static buffer3 = new Vector3();
 
+  public isGeometry = true;
   public type = 'GEOMETRY';
   public vertices: Vector3[];
   public colors: Color[];
