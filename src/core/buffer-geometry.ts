@@ -46,7 +46,7 @@ export class BufferGeometry extends EventDispatcher {
     normal: BufferAttribute<Float32Array>;
     [type: string]: BufferAttribute<TypeArray>;
   }>;
-  public morphAttributes: {};
+  public morphAttributes: { [attr: string]: { name: string }[] };
   public groups: Group[];
   public boundingBox: Box3 | null;
   public boundingSphere: Sphere | null;
@@ -81,7 +81,7 @@ export class BufferGeometry extends EventDispatcher {
     return this.index;
   }
 
-  setIndex(index: Uint32BufferAttribute | Uint16BufferAttribute) {
+  setIndex(index: Uint32BufferAttribute | Uint16BufferAttribute | number[]) {
     if (Array.isArray(index)) {
       this.index = new (arrayMax(index) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute)(index, 1);
     } else {

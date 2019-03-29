@@ -143,9 +143,11 @@ export const InterpolateSmooth = 2302;
 export const ZeroCurvatureEnding = 2400;
 export const ZeroSlopeEnding = 2401;
 export const WrapAroundEnding = 2402;
-export const TrianglesDrawMode = 0;
-export const TriangleStripDrawMode = 1;
-export const TriangleFanDrawMode = 2;
+export enum DrawMode {
+  TrianglesDrawMode = 0,
+  TriangleStripDrawMode = 1,
+  TriangleFanDrawMode = 2
+}
 export enum EncodingType {
   LinearEncoding = 3000,
   sRGBEncoding = 3001,

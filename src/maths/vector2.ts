@@ -1,5 +1,6 @@
 import { Matrix3 } from './matrix3';
 import { BufferAttribute, TypeArray } from '../core/buffer-attribute';
+import { Vector3 } from './vector3';
 
 export class Vector2 {
   public x: number;
@@ -109,14 +110,14 @@ export class Vector2 {
     return this;
   }
 
-  subVectors(a: Vector2, b: Vector2) {
+  subVectors(a: Vector2 | Vector3, b: Vector2 | Vector3) {
     this.x = a.x - b.x;
     this.y = a.y - b.y;
 
     return this;
   }
 
-  multiply(v: Vector2) {
+  multiply(v: Vector2 | Vector3) {
     this.x *= v.x;
     this.y *= v.y;
 

@@ -11,11 +11,13 @@ function ascSort(a: Intersects, b: Intersects) {
 
 export type Intersects = {
   distance: number;
+  distanceToRay?: number;
   point: Vector3;
-  index: number;
+  index?: number;
   face: null | Face3;
-  faceIndex: null | number;
+  faceIndex?: null | number;
   object: Object3D;
+  uv?: Vector2;
 };
 
 function intersectObject(object: Object3D, raycaster: Raycaster, intersects: Intersects[], recursive: boolean) {
