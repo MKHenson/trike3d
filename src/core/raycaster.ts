@@ -4,6 +4,7 @@ import { Vector2 } from '../maths/vector2';
 import { Object3D } from './object-3d';
 import { PerspectiveCamera } from '../cameras/perspective-camera';
 import { Face3 } from './face3';
+import { OrthographicCamera } from '../cameras/orthographic-camera';
 
 function ascSort(a: Intersects, b: Intersects) {
   return a.distance - b.distance;
@@ -70,7 +71,7 @@ export class Raycaster {
     this.ray.set(origin, direction);
   }
 
-  setFromCamera(coords: Vector2, camera: PerspectiveCamera) {
+  setFromCamera(coords: Vector2, camera: PerspectiveCamera | OrthographicCamera) {
     if ((camera as PerspectiveCamera).isPerspectiveCamera) {
       this.ray.origin.setFromMatrixPosition(camera.matrixWorld);
       this.ray.direction
@@ -78,7 +79,7 @@ export class Raycaster {
         .unproject(camera)
         .sub(this.ray.origin)
         .normalize();
-    } else if (camera && camera.isOrthographicCamera) {
+    } else if (camera && (camera as OrthographicCamera).isOrthographicCamera) {
       this.ray.origin
         .set(coords.x, coords.y, (camera.near + camera.far) / (camera.near - camera.far))
         .unproject(camera); // set origin in plane of camera
